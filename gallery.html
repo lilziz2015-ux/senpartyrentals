@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gallery — Sen Moon Bounce</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    .gallery-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #333;
+    }
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      gap: 15px;
+      padding: 20px 0;
+    }
+    .carousel::-webkit-scrollbar {
+      display: none;
+    }
+    .carousel-item {
+      min-width: 300px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+      background: white;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .carousel-item:hover {
+      transform: scale(1.03);
+    }
+    .carousel-item img,
+    .carousel-item video {
+      width: 100%;
+      display: block;
+    }
+    .carousel-item video {
+      height: 200px;
+      object-fit: cover;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+    .lightbox.active {
+      display: flex;
+    }
+    .lightbox img,
+    .lightbox video {
+      max-width: 90%;
+      max-height: 80%;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Sen Moon Bounce</a>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html" class="active">Gallery</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="btn-outline">Contact</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    </div>
+  </header>
+
+  <main class="gallery-container">
+    <h1>📸 Our Party Rentals in Action</h1>
+
+    <!-- Images Carousel (Replace placeholders with your real images) -->
+    <div class="carousel">
+      <div class="carousel-item"><img src="IMG_3251.HEIC" alt="Image 1"></div>
+      <div class="carousel-item"><img src="IMG_2734.HEIC" alt="Image 2"></div>
+      <div class="carousel-item"><img src="IMG_2684.HEIC" alt="Image 3"></div>
+      <div class="carousel-item"><img src="IMG_1555 2.jpg" alt="Image 4"></div>
+      <div class="carousel-item"><img src="IMG_2772.HEIC" alt="Image 5"></div>
+      <div class="carousel-item"><img src="IMG_2633.MOV" alt="Image 6"></div>
+      <div class="carousel-item"><img src="IMG_3927 2.HEIC" alt="Image 7"></div>
+      <div class="carousel-item"><img src="IMG_3109.HEIC" alt="Image 8"></div>
+      <div class="carousel-item"><img src="IMG_3503.HEIC" alt="Image 9"></div>
+      <div class="carousel-item"><img src="IMG_2445.HEIC" alt="Image 10"></div>
+    </div>
+
+    <h2>🎥 Watch Our Rentals in Action</h2>
+
+    <!-- Videos Carousel (Replace with your real videos) -->
+    <div class="carousel">
+      <div class="carousel-item"><video src="840E60D2-76A9-48B5-9424-6813D8BD7E8Esegment_video_2.MP4" controls></video></div>
+      <div class="carousel-item"><video src="IMG_2633.MOV" controls></video></div>
+      <div class="carousel-item"><video src="IMG_2436 2.MOV" controls></video></div>
+      <div class="carousel-item"><video src="assets/videos/video4.mp" controls></video></div>
+      <div class="carousel-item"><video src="as4sets/videos/video5.mp4" controls></video></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© Sen Moon Bounce</div>
+      <div><a href="tel:+15717199575">571-719-9575</a></div>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <div id="lightbox-content"></div>
+  </div>
+
+  <script>
+    // Lightbox script
+    const lightbox = document.getElementById('lightbox');
+    const lightboxContent = document.getElementById('lightbox-content');
+
+    document.querySelectorAll('.carousel-item img, .carousel-item video').forEach(item => {
+      item.addEventListener('click', () => {
+        const clone = item.cloneNode(true);
+        clone.controls = true;
+        lightboxContent.innerHTML = '';
+        lightboxContent.appendChild(clone);
+        lightbox.classList.add('active');
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      lightboxContent.innerHTML = '';
+    }
+  </script>
+</body>
+</html>

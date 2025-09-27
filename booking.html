@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Booking — Sen Party Rentals</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <style>
+    /* Minimal overrides for the booking container to keep site look */
+    .booking-wrap { max-width:900px;margin:32px auto;padding:20px;background:rgba(255,255,255,0.95);border-radius:12px;box-shadow:0 12px 30px rgba(16,24,40,0.06) }
+    .flex-row{display:flex;gap:12px}
+    .col{flex:1}
+    label{font-weight:700;margin-top:10px;display:block}
+    .note{font-size:0.95rem;color:#6b7280}
+    #result-msg{margin-top:12px;padding:12px;border-radius:8px;display:none}
+    .error{background:#ffecec;color:#9b1c1c;border:1px solid #f5c2c2}
+    .success{background:#ecfff2;color:#0b6b2a;border:1px solid #bde7c9}
+  </style>
+</head>
+<body>
+  <main class="container">
+    <div class="booking-wrap">
+      <h1>Book Your Party Rental 🎉</h1>
+      <p class="note">Fill out this form and we will confirm availability by email/phone.</p>
+
+      <form id="booking-form">
+        <div class="flex-row">
+          <div class="col">
+            <label for="name">Full name</label>
+            <input id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required>
+
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" required>
+          </div>
+
+          <div class="col">
+            <label for="date">Event date</label>
+            <input id="date" name="date" type="date" required>
+
+            <label for="start_time">Start time</label>
+            <input id="start_time" name="start_time" type="time" required>
+
+            <label for="end_time">End time</label>
+            <input id="end_time" name="end_time" type="time" required>
+          </div>
+        </div>
+
+        <label for="address">Event address (street, city, state)</label>
+        <input id="address" name="address" required>
+
+        <div class="flex-row">
+          <div style="flex:2">
+            <label for="zip">Event ZIP code</label>
+            <input id="zip" name="zip" placeholder="e.g. 20112" required>
+            <div class="note">Delivery: free within 15 miles of 20112, then $2 / extra mile.</div>
+          </div>
+          <div style="flex:1">
+            <label>&nbsp;</label>
+            <button type="button" id="estimate-btn" class="btn">Estimate Delivery Fee</button>
+            <div id="delivery-result" class="note" style="margin-top:8px">Enter ZIP and click Estimate</div>
+          </div>
+        </div>
+
+        <hr>
+
+        <!-- Multi-select dropdowns (multiple selection allowed) -->
+        <label>🏰 Moon Bounce (hold Ctrl/Cmd to select multiple)</label>
+        <select id="moonbounce" name="moonbounce" multiple>
+          <option value="Modular Moonbounce">Modular Moonbounce</option>
+          <option value="SpongeBob Moonbounce">SpongeBob Moonbounce</option>
+          <option value="Castle Fun House">Castle Fun House</option>
+          <option value="Magic Castle w/ Hoop">Magic Castle w/ Hoop</option>
+          <option value="Princess Castle">Princess Castle</option>
+        </select>
+
+        <label>💦 Water Slides & Wet Rides</label>
+        <select id="waterslide" name="waterslide" multiple>
+          <option value="Giant Flip-Flop Splash">Giant Flip-Flop Splash</option>
+          <option value="Castle Splash Combo">Castle Splash Combo</option>
+          <option value="Dino Splash Adventure">Dino Splash Adventure</option>
+          <option value="Wild Rapid">Wild Rapid</option>
+          <option value="Big Wave Slide">Big Wave Slide</option>
+          <option value="Tropical Thunder (Wet/Dry)">Tropical Thunder (Wet/Dry)</option>
+          <option value="Dunk Tank">Dunk Tank</option>
+        </select>
+
+        <label>🎉 Combo Units</label>
+        <select id="combo" name="combo" multiple>
+          <option value="Castle Combo">Castle Combo</option>
+          <option value="High Sky Combo">High Sky Combo</option>
+          <option value="Jerrassic Combo">Jerrassic Combo</option>
+        </select>
+
+        <label>🏁 Obstacle Courses</label>
+        <select id="obstacle" name="obstacle" multiple>
+          <option value="Black Opps">Black Opps</option>
+          <option value="30 ft Backyard">30 ft Backyard</option>
+          <option value="Extreme Obstacle">Extreme Obstacle</option>
+        </select>
+
+        <label>🔌 Add-Ons</label>
+        <select id="addons" name="addons" multiple>
+          <option value="Generator">Generator</option>
+          <option value="Table">Table</option>
+          <option value="6' Banquet Chair">6' Banquet Chair</option>
+        </select>
+
+        <label>🍿 Concessions</label>
+        <select id="concessions" name="concessions" multiple>
+          <option value="Popcorn Machine">Popcorn Machine</option>
+          <option value="Snow Cone Machine">Snow Cone Machine</option>
+        </select>
+
+        <label for="notes">Notes (setup details, access, etc.)</label>
+        <textarea id="notes" name="notes" rows="3"></textarea>
+
+        <label for="payment">Payment Option</label>
+        <select id="payment" name="payment">
+          <option value="Cash on delivery">Cash on delivery</option>
+          <option value="Zelle on delivery">Zelle on delivery</option>
+          <option value="Check on delivery">Check on delivery</option>
+        </select>
+
+        <hr>
+
+        <!-- Contract -->
+        <div style="max-height:220px;overflow:auto;padding:12px;border:1px solid #eee;border-radius:8px;background:#fff">
+          <h3>Rental Agreement & Terms (short)</h3>
+          <p style="font-size:0.95rem;color:#333">
+            By submitting this booking you agree to Sen Party Rentals terms: 6-hour rental, payment on delivery (cash/Zelle/check), supervise users, provide safe setup area, customer liable for damage, cancellations require 48 hours notice, and release Sen Party Rentals from liability except in case of gross negligence.
+          </p>
+        </div>
+
+        <label style="margin-top:10px">
+          <input type="checkbox" id="agree" required>
+          I have read and agree to the rental terms and conditions.
+        </label>
+
+        <label for="signature">Typed signature (full name) *</label>
+        <input id="signature" name="signature" placeholder="Type your full name" required>
+
+        <div style="margin-top:14px" class="flex-row">
+          <div class="col">
+            <button id="submit-btn" type="submit" class="btn">Submit Booking</button>
+          </div>
+          <div style="align-self:center">
+            <div id="result-msg"></div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script>
+  /***** Client-side script for booking.html *****/
+
+  // Price map for items (used for total calc)
+  const priceMap = {
+    "Modular Moonbounce":200,"SpongeBob Moonbounce":200,"Castle Fun House":220,"Magic Castle w/ Hoop":230,"Princess Castle":220,
+    "Giant Flip-Flop Splash":450,"Castle Splash Combo":480,"Dino Splash Adventure":450,"Wild Rapid":500,"Big Wave Slide":500,"Tropical Thunder (Wet/Dry)":480,"Dunk Tank":200,
+    "Castle Combo":550,"High Sky Combo":600,"Jerrassic Combo":580,
+    "Black Opps":650,"30 ft Backyard":800,"Extreme Obstacle":800,
+    "Generator":100,"Table":10,"6' Banquet Chair":2,
+    "Popcorn Machine":75,"Snow Cone Machine":75
+  };
+
+  // Delivery params
+  const BUSINESS_LAT = 38.9963, BUSINESS_LON = -77.4900, FREE_MILES = 15, EXTRA_PER_MILE = 2;
+  const zipMap = {
+    "20112": {lat:38.9963, lon:-77.4900},
+    "22030": {lat:38.8404, lon:-77.2784}, "22314": {lat:38.8048, lon:-77.0469},
+    "20001": {lat:38.9101, lon:-77.0147}, "20770": {lat:39.0153, lon:-76.8907},
+    "20850": {lat:39.0055, lon:-77.0996}
+  };
+
+  function milesBetween(lat1, lon1, lat2, lon2){
+    const R = 3958.8; const toRad = a=>a*Math.PI/180;
+    const dLat = toRad(lat2-lat1), dLon = toRad(lon2-lon1);
+    const a = Math.sin(dLat/2)**2 + Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLon/2)**2;
+    return 2*R*Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  }
+
+  const estimateBtn = document.getElementById('estimate-btn');
+  estimateBtn?.addEventListener('click', ()=>{
+    const zip = (document.getElementById('zip').value || "").trim();
+    const resultEl = document.getElementById('delivery-result');
+    if(!zip){ resultEl.textContent = "Please enter a ZIP code."; return; }
+    if(zipMap[zip]){
+      const loc = zipMap[zip];
+      const miles = Math.round(milesBetween(BUSINESS_LAT,BUSINESS_LON,loc.lat,loc.lon)*10)/10;
+      if(miles <= FREE_MILES){ resultEl.textContent = `Distance: ${miles} miles — Delivery: FREE`; window.deliveryFee = 0; }
+      else { const extra = Math.ceil(miles-FREE_MILES); const fee = extra*EXTRA_PER_MILE; resultEl.textContent = `Distance: ${miles} miles — Delivery fee: $${fee}`; window.deliveryFee = fee; }
+    } else {
+      const m = prompt("ZIP not in quick list — enter approximate distance in miles from 20112:");
+      if(!m) { resultEl.textContent = "Estimate canceled."; return; }
+      const miles = Number(m); if(isNaN(miles)){ resultEl.textContent = "Invalid miles."; return; }
+      if(miles <= FREE_MILES){ resultEl.textContent = `Distance: ${miles} miles — Delivery: FREE`; window.deliveryFee = 0; } else { const extra = Math.ceil(miles-FREE_MILES); const fee = extra*EXTRA_PER_MILE; resultEl.textContent = `Distance: ${miles} miles — Delivery fee: $${fee}`; window.deliveryFee = fee; }
+    }
+  });
+
+  // Get selections from a multi-select <select multiple>
+  function getSelectedOptions(selectId){
+    const sel = document.getElementById(selectId);
+    if(!sel) return [];
+    return Array.from(sel.selectedOptions).map(o => o.value);
+  }
+
+  function calcItemsTotal(items){
+    let total = 0;
+    items.forEach(it => { if(priceMap[it]) total += priceMap[it]; });
+    return total;
+  }
+
+  // Form submit — send to backend API /api/bookings
+  const form = document.getElementById('booking-form');
+  const resultMsg = document.getElementById('result-msg');
+  form.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    resultMsg.style.display = 'none';
+    // basic validation
+    if(!document.getElementById('agree').checked){ showResult('You must agree to the rental terms.', true); return; }
+    const payload = {
+      name: document.getElementById('name').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      phone: document.getElementById('phone').value.trim(),
+      date: document.getElementById('date').value,
+      start_time: document.getElementById('start_time').value,
+      end_time: document.getElementById('end_time').value,
+      address: document.getElementById('address').value.trim(),
+      zip: document.getElementById('zip').value.trim(),
+      moonbounce: getSelectedOptions('moonbounce'),
+      waterslide: getSelectedOptions('waterslide'),
+      combo: getSelectedOptions('combo'),
+      obstacle: getSelectedOptions('obstacle'),
+      addons: getSelectedOptions('addons'),
+      concessions: getSelectedOptions('concessions'),
+      notes: document.getElementById('notes').value.trim(),
+      payment: document.getElementById('payment').value,
+      signature: document.getElementById('signature').value.trim(),
+      agreed: true
+    };
+
+    // total calculation
+    const allItems = [].concat(payload.moonbounce, payload.waterslide, payload.combo, payload.obstacle, payload.addons, payload.concessions);
+    const itemsTotal = calcItemsTotal(allItems);
+    const deliveryFee = Number(window.deliveryFee || 0);
+    payload.items_total = itemsTotal;
+    payload.delivery_fee = deliveryFee;
+    payload.grand_total = itemsTotal + deliveryFee;
+
+    // POST JSON
+    try{
+      const res = await fetch('/api/bookings', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if(res.ok){ showResult('Booking submitted! We will contact you soon. (Ref: ' + data.id + ')', false, true); form.reset(); document.getElementById('delivery-result').textContent=""; window.deliveryFee = 0; }
+      else showResult(data.error || 'Failed to submit booking. Try again later.', true);
+    }catch(err){
+      showResult('Error sending booking. Check your connection or try again later.', true);
+      console.error(err);
+    }
+  });
+
+  function showResult(msg, isError=false, isSuccess=false){
+    resultMsg.style.display = 'block';
+    resultMsg.textContent = msg;
+    resultMsg.className = isError ? 'error' : (isSuccess ? 'success' : '');
+  }
+  </script>
+</body>
+</html>
+<a target="_blank" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Party+Rental+Booking&dates=20251001T150000Z/20251001T180000Z&details=Customer:+John+Doe,+Water+Slide&location=Manassas+VA">
+  Add to Google Calendar
+</a>
