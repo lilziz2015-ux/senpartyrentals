@@ -3,48 +3,188 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Contact — Sen Moon Bounce</title>
-  <link rel="stylesheet" href="assets/style.css" />
+  <title>Contact — Sen Party Rentals</title>
+  <meta name="description" content="Contact Sen Party Rentals — DMV bounce houses, water slides, combos, obstacle courses, concessions and party rentals." />
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f9fc;
+      margin: 0;
+      padding: 0;
+    }
+    .contact-hero {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: linear-gradient(135deg, #ff6b6b, #f7b733);
+      color: white;
+    }
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 1100px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+    .contact-info {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .contact-info h2, .contact-info h3 {
+      margin-top: 0;
+      color: #333;
+    }
+    .contact-form {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .contact-form h2 {
+      margin-top: 0;
+      color: #333;
+    }
+    .contact-form label {
+      display: block;
+      margin: 1rem 0 0.5rem;
+      font-weight: bold;
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .contact-form button {
+      margin-top: 1.5rem;
+      padding: 0.75rem 2rem;
+      background: #ff6b6b;
+      border: none;
+      color: #fff;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .contact-form button:hover {
+      background: #f94d4d;
+    }
+    #form-status {
+      margin-top: 1rem;
+      font-weight: bold;
+      font-size: 1rem;
+      text-align: center;
+    }
+    footer {
+      text-align: center;
+      background: #333;
+      color: #fff;
+      padding: 1.5rem 1rem;
+      margin-top: 3rem;
+    }
+    @media (max-width: 800px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <div class="brand">
-        <img src="assets/logo.png" alt="Sen Moon Bounce logo" class="logo" />
-        <div>
-          <h1>Sen Moon Bounce</h1>
-          <p class="tag">Party rentals — Serving the DMV</p>
-        </div>
-      </div>
-      <nav class="nav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="services.html" class="nav-link">Rentals</a>
-        <a href="contact.html" class="nav-link">Contact</a>
+      <a class="brand" href="index.html">Sen Party Rentals</a>
+      <nav class="nav" id="main-nav">
+        <a href="index.html">Home</a>
+        <a href="inventory.html">Our Units</a>
+        <a href="booking.html" class="cta">Book Now</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html" class="active">Contact</a>
       </nav>
     </div>
   </header>
 
-  <main class="container contact">
-    <h2>Get in touch</h2>
-    <p>Phone: <a href="tel:+15717199570">571-719-9575</a></p>
-    <p>Email: <a href="mailto:senmoonbounce@gmail.com">senmoonbounce@gmail.com</a></p>
-    <p>Address: 11910 Bradley Forest Rd, Manassas, VA 20112</p>
+  <section class="contact-hero">
+    <h1>📞 Contact Us</h1>
+    <p>We’re here to help make your next party unforgettable!</p>
+  </section>
 
-    <h3>Booking & Notifications</h3>
-    <p>Bookings made through the site will appear in the Google Calendar connected to <strong>senmoonbounce@gmail.com</strong> (Calendly). To add SMS notifications on booking, we can enable a Zapier integration that texts your phone — just ask and I’ll set it up.</p>
+  <main class="container contact-container">
+    <!-- Contact info -->
+    <div class="contact-info">
+      <h2>📍 Get in Touch</h2>
+      <p><strong>Phone:</strong> <a href="tel:+15717199570">571-719-9575</a></p>
+      <p><strong>Email:</strong> <a href="mailto:senmoonbounce@gmail.com">senmoonbounce@gmail.com</a></p>
+      <p><strong>Address:</strong> 11910 Bradley Forest Rd, Manassas, VA 20112</p>
 
-    <p>Prefer to send a quick email instead? <a href="mailto:senmoonbounce@gmail.com?subject=Quick%20Booking%20Question">Email us</a>.</p>
+      <hr style="margin: 1.5rem 0;">
+
+      <h3>📅 Booking & Notifications</h3>
+      <p>All online bookings automatically sync with our Google Calendar. Want text reminders too? Ask us about enabling free SMS alerts!</p>
+
+      <p>💌 Prefer email? <a href="mailto:senmoonbounce@gmail.com?subject=Quick%20Booking%20Question">Click here to send us a message</a>.</p>
+    </div>
+
+    <!-- Contact form -->
+    <form class="contact-form" action="https://formspree.io/f/xzzjdywd" method="POST">
+      <h2>💬 Send Us a Message</h2>
+
+      <label for="name">Your Name</label>
+      <input type="text" name="name" id="name" required>
+
+      <label for="email">Your Email</label>
+      <input type="email" name="email" id="email" required>
+
+      <label for="phone">Your Phone</label>
+      <input type="tel" name="phone" id="phone" required>
+
+      <label for="message">Your Message</label>
+      <textarea name="message" id="message" rows="5" required></textarea>
+
+      <button type="submit">📨 Send Message</button>
+      <p id="form-status"></p>
+    </form>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <div>
-        <h4>Sen Moon Bounce</h4>
-        <p>11910 Bradley Forest Rd, Manassas, VA 20112</p>
-        <p>Phone: <a href="tel:+15717199570">571-719-9575</a> • Email: <a href="mailto:senmoonbounce@gmail.com">senmoonbounce@gmail.com</a></p>
-      </div>
+      <p>&copy; 2025 Sen Moon Bounce — Serving the DMV with the best party rentals!</p>
     </div>
   </footer>
 
+  <script>
+    const form = document.querySelector('.contact-form');
+    const statusMsg = document.getElementById('form-status');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
+
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          headers: { "Accept": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+          form.reset();
+          statusMsg.textContent = "🎉 Thank you! Your message was sent successfully. We'll contact you soon.";
+          statusMsg.style.color = "green";
+        } else {
+          statusMsg.textContent = "⚠️ Something went wrong. Please try again later.";
+          statusMsg.style.color = "red";
+        }
+      } catch (err) {
+        statusMsg.textContent = "❌ Network error. Please check your connection and try again.";
+        statusMsg.style.color = "red";
+      }
+    });
+  </script>
 </body>
 </html>
