@@ -1,11 +1,97 @@
-<!<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sen Party Rentals — Home</title>
-  <meta name="description" content="Sen Party Rentals — DMV bounce houses, water slides, combos, obstacle courses, concessions and party rentals." />
+  <title>Gallery — Sen Party Rentals</title>
+  <meta name="description" content="Contact Sen Party Rentals — DMV bounce houses, water slides, combos, obstacle courses, concessions and party rentals." />
   <link rel="stylesheet" href="assets/style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f9fc;
+      margin: 0;
+      padding: 0;
+    }
+    .contact-hero {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: linear-gradient(135deg, #ff6b6b, #f7b733);
+      color: white;
+    }
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 1100px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+    .contact-info {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .contact-info h2, .contact-info h3 {
+      margin-top: 0;
+      color: #333;
+    }
+    .contact-form {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .contact-form h2 {
+      margin-top: 0;
+      color: #333;
+    }
+    .contact-form label {
+      display: block;
+      margin: 1rem 0 0.5rem;
+      font-weight: bold;
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .contact-form button {
+      margin-top: 1.5rem;
+      padding: 0.75rem 2rem;
+      background: #ff6b6b;
+      border: none;
+      color: #fff;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .contact-form button:hover {
+      background: #f94d4d;
+    }
+    #form-status {
+      margin-top: 1rem;
+      font-weight: bold;
+      font-size: 1rem;
+      text-align: center;
+    }
+    footer {
+      text-align: center;
+      background: #333;
+      color: #fff;
+      padding: 1.5rem 1rem;
+      margin-top: 3rem;
+    }
+    @media (max-width: 800px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -16,31 +102,10 @@
         <a href="inventory.html">Our Units</a>
         <a href="booking.html" class="cta">Book Now</a>
         <a href="gallery.html">Gallery</a>
-        <a href="contact.html">Contact</a>
-        <button id="nav-toggle" aria-label="Open menu">☰</button>
+        <a href="contact.html" class="active">Contact</a>
       </nav>
     </div>
   </header>
-
-  <main>
-    <section class="hero container">
-      <div class="hero-left">
-        <h1>Make your party unforgettable</h1>
-        <p class="hero-slogan">DMV’s Best Bounce House &amp; Water Slide Rentals — We Bring the Fun to You!</p>
-        <p class="lead">Sen Party Rentals brings the fun — clean, safe inflatables, water slides, obstacle courses, concessions and more. Fast delivery & professional setup.</p>
-        <div class="hero-actions">
-          <a class="btn" href="inventory.html">See Units</a>
-          <a class="btn outline" href="booking.html">Request Booking</a>
-        </div>
-        <ul class="features-list small-muted">
-          <li>Sanitized & insured equipment</li>
-          <li>Friendly, professional setup team</li>
-          <li>Free delivery within 15 miles of 20112</li>
-        </ul>
-      </div>
-      <div class="hero-right">
-        <img src="IMG_0807 copy Medium.jpeg" alt="Kids playing on an inflatable" />
-      </div>
     </section>
   <main class="gallery-container">
     <h1>📸 Our Party Rentals in Action</h1>
