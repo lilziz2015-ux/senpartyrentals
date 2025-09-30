@@ -278,14 +278,14 @@
 
     // POST JSON
     try{
-      const res = await fetch('https://script.google.com/macros/s/AKfycbw5m6D1RRWDct6LW8RCJw6fdC8e6NVlSvZiN7G-IP9ZT61bHayetNi9ZVh_Eh4Dbomz/exec',{
+      const res = await fetch('https://script.google.com/macros/s/AKfycbzUsDZC_GGvBchnW-0mVfK5mVD8n2NHB9imkK6aEiJ4/dev', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify(payload)
       });
       const data = await res.json();
       if(res.ok){ showResult('Get a Quote! We will contact you soon. (Ref: ' + data.id + ')', false, true); form.reset(); document.getElementById('delivery-result').textContent=""; window.deliveryFee = 0; }
-      else showResult(data.error || 'Failed to submit booking. Try again later.', true);
+      else showResult(data.error || 'Failed to Get A quote. Try again later.', true);
     }catch(err){
       showResult('Error sending booking. Check your connection or try again later.', true);
       console.error(err);
