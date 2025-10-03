@@ -2,145 +2,165 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gallery — Sen Party Rentals</title>
-  <meta name="description" content="Contact Sen Party Rentals — DMV bounce houses, water slides, combos, obstacle courses, concessions and party rentals." />
-  <link rel="stylesheet" href="assets/style.css">
+  <meta name="description" content="See our bounce houses, water slides, obstacle courses, and party rentals in action throughout the DMV area.">
+  <link rel="stylesheet" href="assets/style.css" />
   <style>
     body {
       font-family: Arial, sans-serif;
       background: #f7f9fc;
       margin: 0;
       padding: 0;
+      color: #333;
     }
-    .contact-hero {
-      text-align: center;
-      padding: 3rem 1rem;
-      background: linear-gradient(135deg, #ff6b6b, #f7b733);
-      color: white;
+    header {
+      background: #fff;
+      padding: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-    .contact-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       max-width: 1100px;
-      margin: 3rem auto;
-      padding: 0 1.5rem;
+      margin: 0 auto;
     }
-    .contact-info {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    .brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+      color: #ff6b6b;
     }
-    .contact-info h2, .contact-info h3 {
-      margin-top: 0;
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
       color: #333;
-    }
-    .contact-form {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    .contact-form h2 {
-      margin-top: 0;
-      color: #333;
-    }
-    .contact-form label {
-      display: block;
-      margin: 1rem 0 0.5rem;
       font-weight: bold;
     }
-    .contact-form input, .contact-form textarea {
-      width: 100%;
-      padding: 0.75rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 1rem;
-    }
-    .contact-form button {
-      margin-top: 1.5rem;
-      padding: 0.75rem 2rem;
-      background: #ff6b6b;
-      border: none;
+    nav a.cta {
       color: #fff;
-      font-size: 1.1rem;
+      background: #ff6b6b;
+      padding: 0.5rem 1rem;
       border-radius: 5px;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      text-align: center;
+    }
+    main h1 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #ff6b6b;
+    }
+    .carousel {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    .carousel-item img, .carousel-item video {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: transform 0.3s ease;
     }
-    .contact-form button:hover {
-      background: #f94d4d;
+    .carousel-item img:hover, .carousel-item video:hover {
+      transform: scale(1.03);
     }
-    #form-status {
-      margin-top: 1rem;
-      font-weight: bold;
-      font-size: 1rem;
-      text-align: center;
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
     }
+    .lightbox.active {
+      display: flex;
+    }
+    #lightbox-content img,
+    #lightbox-content video {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+    }
+
     footer {
-      text-align: center;
       background: #333;
       color: #fff;
       padding: 1.5rem 1rem;
+      text-align: center;
       margin-top: 3rem;
     }
-    @media (max-width: 800px) {
-      .contact-container {
-        grid-template-columns: 1fr;
+
+    @media (max-width: 600px) {
+      nav a {
+        margin: 0 0.5rem;
+      }
+      main h1 {
+        font-size: 1.7rem;
+      }
+      .carousel-item img, .carousel-item video {
+        height: 200px;
       }
     }
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
+
+  <header>
+    <div class="header-inner">
       <a class="brand" href="index.html">Sen Party Rentals</a>
-      <nav class="nav" id="main-nav">
+      <nav>
         <a href="index.html">Home</a>
         <a href="inventory.html">Our Units</a>
         <a href="booking.html" class="cta">Book Now</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="contact.html" class="active">Contact</a>
+        <a href="gallery.html" class="active">Gallery</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
-    </section>
-  <main class="gallery-container">
+
+  <main>
     <h1>📸 Our Party Rentals in Action</h1>
 
-    <!-- Images Carousel (Replace placeholders with your real images) -->
     <div class="carousel">
-      <div class="carousel-item"><img src="IMG_3251.HEIC" alt="Image 1"></div>
-      <div class="carousel-item"><img src="IMG_2734.HEIC" alt="Image 2"></div>
-      <div class="carousel-item"><img src="IMG_2684.HEIC" alt="Image 3"></div>
-      <div class="carousel-item"><img src="IMG_1555 2.jpg" alt="Image 4"></div>
-      <div class="carousel-item"><img src="IMG_2772.HEIC" alt="Image 5"></div>
-      <div class="carousel-item"><img src="IMG_2633.MOV" alt="Image 6"></div>
-      <div class="carousel-item"><img src="IMG_3927 2.HEIC" alt="Image 7"></div>
-      <div class="carousel-item"><img src="IMG_3109.HEIC" alt="Image 8"></div>
-      <div class="carousel-item"><img src="IMG_3503.HEIC" alt="Image 9"></div>
-      <div class="carousel-item"><img src="IMG_2445.HEIC" alt="Image 10"></div>
+      <div class="carousel-item"><img src="IMG_3927 2.HEIC" alt="Bounce House Fun"></div>
+      <div class="carousel-item"><img src="IMG_2434 3.MOV" alt="Water Slide Adventure"></div>
+      <div class="carousel-item"><img src="IMG_2453.HEIC" alt="Obstacle Course Challenge"></div>
+      <div class="carousel-item"><img src="images/img4.jpg" alt="Party Setup"></div>
+      <div class="carousel-item"><img src="IMG_0809.JPG" alt="Kids Having Fun"></div>
     </div>
 
-    <h2>🎥 Watch Our Rentals in Action</h2>
-
-    <!-- Videos Carousel (Replace with your real videos) -->
+    <h2 style="margin-top:3rem;">🎥 Watch Our Rentals in Action</h2>
     <div class="carousel">
-      <div class="carousel-item"><video src="840E60D2-76A9-48B5-9424-6813D8BD7E8Esegment_video_2.MP4" controls></video></div>
-      <div class="carousel-item"><video src="IMG_2633.MOV" controls></video></div>
-      <div class="carousel-item"><video src="IMG_2436 2.MOV" controls></video></div>
-      <div class="carousel-item"><video src="assets/videos/video4.mp" controls></video></div>
-      <div class="carousel-item"><video src="as4sets/videos/video5.mp4" controls></video></div>
+      <div class="carousel-item"><video src="IMG_4049.MOV" controls></video></div>
+      <div class="carousel-item"><video src="IMG_3107 2.MOV" controls></video></div>
+      <div class="carousel-item"><video src="IMG_2921.MOV" controls></video></div>
     </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div>© Sen Moon Bounce</div>
-      <div><a href="tel:+15717199575">571-719-9575</a></div>
-    </div>
+  <footer>
+    © 2025 Sen Party Rentals • <a href="tel:+15717199575" style="color:#fff;text-decoration:none;">571-719-9575</a>
   </footer>
 
   <!-- Lightbox -->
@@ -150,7 +170,6 @@
   </div>
 
   <script>
-    // Lightbox script
     const lightbox = document.getElementById('lightbox');
     const lightboxContent = document.getElementById('lightbox-content');
 
@@ -169,5 +188,6 @@
       lightboxContent.innerHTML = '';
     }
   </script>
+
 </body>
 </html>
