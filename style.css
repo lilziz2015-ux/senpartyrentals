@@ -289,3 +289,21 @@ form input, form select, form textarea { width:100%; padding:0.55rem; border-rad
   font-size: 1rem;
   margin-bottom: 0.5rem;
 }
+.social-links {
+  margin-top: 15px;
+}
+
+.social-links a {
+  margin-right: 12px;
+  font-size: 1.4rem;
+  transition: color 0.3s ease, transform 0.2s;
+}
+
+.social-links a:hover {
+  transform: scale(1.1);
+}
+
+/* Brand colors */
+.social-links i.fa-tiktok { color: #000; }
+.social-links i.fa-instagram { color: #e1306c; }
+.social-links i.fa-facebook { color: #1877f2; }
