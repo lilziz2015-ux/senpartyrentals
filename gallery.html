@@ -2,22 +2,66 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gallery — Sen Party Rentals</title>
-  <meta name="description" content="See our bounce houses, water slides, obstacle courses, and party rentals in action throughout the DMV area.">
-  <link rel="stylesheet" href="assets/style.css" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sen Party Rentals | Gallery</title>
+  <meta name="description" content="Explore our bounce houses, water slides, and party rentals in action across the DMV.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f7f9fc;
+      font-family: 'Poppins', Arial, sans-serif;
       margin: 0;
-      padding: 0;
       color: #333;
+      background: linear-gradient(135deg, #a8edea, #fed6e3);
+      overflow-x: hidden;
     }
+    a { text-decoration: none; }
+
+    /* ===== Confetti Canvas ===== */
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ===== Balloon Styles ===== */
+    .balloon {
+      position: absolute;
+      width: 40px;
+      height: 60px;
+      border-radius: 50% 50% 50% 50%;
+      opacity: 0.8;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .balloon::after {
+      content: '';
+      position: absolute;
+      width: 2px;
+      height: 20px;
+      background: #333;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .balloon.red { background: #FF4C4C; }
+    .balloon.blue { background: #4C6EFF; }
+    .balloon.green { background: #4CFF6E; }
+    .balloon.yellow { background: #FFE94C; }
+    .balloon.pink { background: #FF4CF0; }
+
+    /* ===== Header ===== */
     header {
-      background: #fff;
+      background: rgba(255,255,255,0.95);
       padding: 1rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
     .header-inner {
       display: flex;
@@ -27,109 +71,183 @@
       margin: 0 auto;
     }
     .brand {
+      display: flex;
+      align-items: center;
       font-size: 1.5rem;
       font-weight: bold;
-      text-decoration: none;
-      color: #ff6b6b;
+      color: #0078ff;
+    }
+    .circle-logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 10px;
+      border: 3px solid #0078ff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
     nav a {
       margin: 0 1rem;
-      text-decoration: none;
+      font-weight: 600;
       color: #333;
-      font-weight: bold;
+      transition: color 0.3s;
     }
+    nav a:hover { color: #0078ff; }
     nav a.cta {
       color: #fff;
-      background: #ff6b6b;
+      background: #0078ff;
       padding: 0.5rem 1rem;
       border-radius: 5px;
     }
+    nav a.cta:hover { background: #005fcc; }
+    nav a.active { color: #0078ff; font-weight: 700; }
 
+    /* ===== Main Content ===== */
     main {
-      max-width: 1100px;
+      max-width: 1400px;
       margin: 2rem auto;
       padding: 0 1rem;
       text-align: center;
+      position: relative;
+      z-index: 2;
     }
-    main h1 {
-      font-size: 2rem;
+    main h1 { font-size: 2.4rem; color: #0078ff; margin-bottom: 0.5rem; }
+    main p { color: #555; margin-bottom: 2rem; }
+
+    /* ===== Filter Buttons ===== */
+    .filter-buttons {
       margin-bottom: 2rem;
-      color: #ff6b6b;
-    }
-    .carousel {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 1rem;
     }
-    .carousel-item img, .carousel-item video {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 10px;
+    .filter-buttons button {
+      background: #fff;
+      border: 2px solid #0078ff;
+      color: #0078ff;
+      padding: 0.5rem 1rem;
+      font-weight: 600;
+      border-radius: 5px;
       cursor: pointer;
-      transition: transform 0.3s ease;
+      transition: all 0.3s ease;
     }
-    .carousel-item img:hover, .carousel-item video:hover {
-      transform: scale(1.03);
+    .filter-buttons button.active,
+    .filter-buttons button:hover {
+      background: #0078ff;
+      color: #fff;
     }
 
-    /* Lightbox */
+    /* ===== Masonry Gallery ===== */
+    .gallery-grid {
+      column-count: 3;
+      column-gap: 1rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    @media (max-width: 1000px) { .gallery-grid { column-count: 2; } }
+    @media (max-width: 600px) { .gallery-grid { column-count: 1; } }
+
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 1rem;
+      opacity: 1;
+      transform: scale(1);
+      transition: all 0.4s ease;
+    }
+    .gallery-item.hide {
+      opacity: 0;
+      transform: scale(0.8);
+      pointer-events: none;
+    }
+    .gallery-item img,
+    .gallery-item video {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery-item img:hover,
+    .gallery-item video:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+
+    /* ===== Lightbox ===== */
     .lightbox {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.85);
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9);
       display: none;
       align-items: center;
       justify-content: center;
-      z-index: 1000;
+      z-index: 1003;
+      padding: 1rem;
     }
-    .lightbox.active {
-      display: flex;
-    }
+    .lightbox.active { display: flex; }
     #lightbox-content img,
     #lightbox-content video {
       max-width: 90%;
       max-height: 90%;
       border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
     }
     .lightbox-close {
       position: absolute;
       top: 20px;
       right: 30px;
-      font-size: 2rem;
+      font-size: 2.5rem;
       color: #fff;
       cursor: pointer;
+      font-weight: bold;
     }
 
+    /* ===== Footer ===== */
     footer {
       background: #333;
       color: #fff;
-      padding: 1.5rem 1rem;
       text-align: center;
+      padding: 1.5rem 1rem;
       margin-top: 3rem;
+      position: relative;
+      z-index: 2;
     }
+    footer a { color: #fff; font-weight: 600; }
 
-    @media (max-width: 600px) {
-      nav a {
-        margin: 0 0.5rem;
-      }
-      main h1 {
-        font-size: 1.7rem;
-      }
-      .carousel-item img, .carousel-item video {
-        height: 200px;
-      }
+    /* ===== Sparkles ===== */
+    .sparkle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: #fff;
+      border-radius: 50%;
+      opacity: 0.8;
+      pointer-events: none;
+      z-index: 1;
+      box-shadow: 0 0 8px #fff, 0 0 12px #FFD700, 0 0 20px #FF69B4;
     }
   </style>
 </head>
 <body>
 
+  <!-- Confetti Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Balloons Container -->
+  <div id="balloons-container"></div>
+
+  <!-- Sparkles Container -->
+  <div id="sparkles-container"></div>
+
+  <!-- Header -->
   <header>
     <div class="header-inner">
-      <a class="brand" href="index.html">Sen Party Rentals</a>
+      <a class="brand" href="index.html">
+        <img src="02B58D79-6737-47EA-8099-73006879E55A Small.jpeg" alt="Sen Party Rentals Logo" class="circle-logo">
+        Sen Party Rentals
+      </a>
       <nav>
         <a href="index.html">Home</a>
         <a href="inventory.html">Our Units</a>
@@ -140,19 +258,41 @@
     </div>
   </header>
 
+  <!-- Main Gallery -->
   <main>
-    <main>
-  <h1>📸 Our Party Rentals in Action</h1>
+    <h1>🎉 Our Party Rentals in Action</h1>
+    <p>Filter by type and enjoy our bounce houses, water slides, and videos — fun for all ages across the DMV!</p>
 
-  <h2 style="margin-top:3rem;">🎥 Watch Our Rentals in Action</h2>
-  <div class="gallery-carousel">
-    <div class="gallery-item"><video src="IMG_3107 2.mp4" controls></video></div>
-    <div class="gallery-item"><video src="IMG_4049.mp4" controls></video></div>
-    <div class="gallery-item"><video src="IMG_2921.Mp4" controls></video></div>
-  </div>
-</main>
+    <!-- Filter Buttons -->
+    <div class="filter-buttons">
+      <button class="active" data-filter="all">All</button>
+      <button data-filter="bounce">Bounce Houses</button>
+      <button data-filter="slide">Water Slides</button>
+      <button data-filter="video">Videos</button>
+    </div>
+
+    <!-- Masonry Gallery Grid -->
+    <div class="gallery-grid">
+      <!-- Bounce Houses -->
+      <div class="gallery-item bounce"><img src="" alt="Bounce House 1"></div>
+      <div class="gallery-item bounce"><img src="IMG_4084.JPG" alt="Bounce House 2"></div>
+      <div class="gallery-item bounce"><img src="IMG_2919.HEIC" alt="Bounce House 3"></div>
+
+      <!-- Water Slides -->
+      <div class="gallery-item slide"><img src="IMG_3928 2.HEIC" alt="Water Slide 1"></div>
+      <div class="gallery-item slide"><img src="IMG_0807 2.JPG" alt="Water Slide 2"></div>
+      <div class="gallery-item slide"><img src="slide3.jpg" alt="Water Slide 3"></div>
+
+      <!-- Videos -->
+      <div class="gallery-item video"><video src="video1.mp4" controls></video></div>
+      <div class="gallery-item video"><video src="video2.mp4" controls></video></div>
+      <div class="gallery-item video"><video src="video3.mp4" controls></video></div>
+    </div>
+  </main>
+
+  <!-- Footer -->
   <footer>
-    © 2025 Sen Party Rentals • <a href="tel:+15717199575" style="color:#fff;text-decoration:none;">571-719-9575</a>
+    © 2025 Sen Party Rentals • <a href="tel:+15717199575">571-719-9575</a>
   </footer>
 
   <!-- Lightbox -->
@@ -161,24 +301,106 @@
     <div id="lightbox-content"></div>
   </div>
 
+  <!-- JS -->
   <script>
+    // ===== Lightbox =====
     const lightbox = document.getElementById('lightbox');
     const lightboxContent = document.getElementById('lightbox-content');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const filterButtons = document.querySelectorAll('.filter-buttons button');
 
-    document.querySelectorAll('.carousel-item img, .carousel-item video').forEach(item => {
+    galleryItems.forEach(item => {
       item.addEventListener('click', () => {
-        const clone = item.cloneNode(true);
-        clone.controls = true;
+        const clone = item.querySelector('img, video').cloneNode(true);
+        if(clone.tagName === 'VIDEO'){ clone.controls=true; clone.autoplay=true; }
         lightboxContent.innerHTML = '';
         lightboxContent.appendChild(clone);
         lightbox.classList.add('active');
       });
     });
-
-    function closeLightbox() {
-      lightbox.classList.remove('active');
-      lightboxContent.innerHTML = '';
+    function closeLightbox(){ 
+      const video = lightboxContent.querySelector('video'); 
+      if(video) video.pause(); 
+      lightbox.classList.remove('active'); 
+      lightboxContent.innerHTML=''; 
     }
+
+    // ===== Filter =====
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn=>btn.classList.remove('active'));
+        button.classList.add('active');
+        const filter = button.dataset.filter;
+        galleryItems.forEach(item=>{
+          if(filter==='all'||item.classList.contains(filter)) item.classList.remove('hide');
+          else item.classList.add('hide');
+        });
+      });
+    });
+
+    // ===== Confetti =====
+    const canvas=document.getElementById('confetti-canvas');
+    const ctx=canvas.getContext('2d');
+    let w=canvas.width=window.innerWidth;
+    let h=canvas.height=window.innerHeight;
+    window.addEventListener('resize',()=>{ w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight; });
+    const confettiCount=150,confetti=[],colors=['#FF0055','#FFAA00','#00CCFF','#33FF77','#FF33CC'];
+    for(let i=0;i<confettiCount;i++){ 
+      confetti.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*6+4,d:Math.random()*confettiCount,color:colors[Math.floor(Math.random()*colors.length)],tilt:Math.random()*10-10,tiltAngleIncremental:Math.random()*0.07+0.05,tiltAngle:0});
+    }
+    function drawConfetti(){ ctx.clearRect(0,0,w,h); confetti.forEach(c=>{ctx.beginPath();ctx.lineWidth=c.r/2;ctx.strokeStyle=c.color;ctx.moveTo(c.x+c.tilt+c.r/4,c.y);ctx.lineTo(c.x+c.tilt,c.y+c.tilt+c.r/4);ctx.stroke();}); updateConfetti(); }
+    function updateConfetti(){ confetti.forEach((c,i)=>{ c.tiltAngle+=c.tiltAngleIncremental; c.y+=(Math.cos(c.d)+3+c.r/2)/2; c.x+=Math.sin(c.d); c.tilt=Math.sin(c.tiltAngle)*15; if(c.y>h) confetti[i].y=-10; }); }
+    function animateConfetti(){ drawConfetti(); requestAnimationFrame(animateConfetti); } animateConfetti();
+
+    // ===== Balloons =====
+    const balloonContainer=document.getElementById('balloons-container');
+    const balloonColors=['red','blue','green','yellow','pink'];
+    for(let i=0;i<15;i++){
+      const b=document.createElement('div');
+      b.className='balloon '+balloonColors[Math.floor(Math.random()*balloonColors.length)];
+      b.style.left=Math.random()*100+'vw';
+      b.style.bottom='-60px';
+      balloonContainer.appendChild(b);
+      animateBalloon(b);
+    }
+    function animateBalloon(balloon){
+      let posY=parseFloat(balloon.style.bottom);
+      const speed=Math.random()*0.5+0.5;
+      const sway=Math.random()*50;
+      let angle=0;
+      function floatUp(){
+        posY+=speed;
+        balloon.style.bottom=posY+'px';
+        balloon.style.transform=`translateX(${Math.sin(angle)*sway}px)`;
+        angle+=0.01;
+        if(posY>window.innerHeight+60){ posY=-60; balloon.style.left=Math.random()*100+'vw'; }
+        requestAnimationFrame(floatUp);
+      }
+      floatUp();
+    }
+
+    // ===== Sparkles =====
+    const sparklesContainer=document.getElementById('sparkles-container');
+    for(let i=0;i<50;i++){
+      const s=document.createElement('div');
+      s.className='sparkle';
+      s.style.left=Math.random()*100+'vw';
+      s.style.top=Math.random()*100+'vh';
+      s.style.width=(2+Math.random()*4)+'px';
+      s.style.height=s.style.width;
+      sparklesContainer.appendChild(s);
+    }
+    const sparkles=document.querySelectorAll('.sparkle');
+    function animateSparkles(){
+      sparkles.forEach(s=>{
+        let y=parseFloat(s.style.top);
+        y+=Math.random()*0.3;
+        if(y>window.innerHeight) y=0;
+        s.style.top=y+'px';
+      });
+      requestAnimationFrame(animateSparkles);
+    }
+    animateSparkles();
   </script>
 
 </body>
