@@ -417,3 +417,86 @@ form input, form select, form textarea {
 /* small helpers (kept intentionally) */
 .hidden { display: none !important; }
 .visually-hidden { position: absolute !important; left: -9999px !important; top: auto !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: #004aad; /* Blue tone */
+}
+.circle-logo {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  border-radius: 50%;       /* Makes it a perfect circle */
+  border: 2px solid #004aad; /* Optional: Blue border to match your brand */
+  background-color: #fff;   /* White background behind the logo */
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.15); /* Soft shadow for polish */
+}
+.circle-logo:hover {
+  transform: scale(1.05);
+  transition: 0.3s ease;
+}
+.pretty-logo {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #ffffff 40%, #dbeafe 100%);
+  border: 3px solid #7c3aed;
+  padding: 8px;
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.25), 0 0 10px rgba(126, 232, 250, 0.2);
+  transition: all 0.35s ease;
+  object-fit: cover;
+  animation: logoGlow 4s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Soft glowing pulse */
+@keyframes logoGlow {
+  0%, 100% {
+    box-shadow: 0 6px 20px rgba(124, 58, 237, 0.25), 0 0 10px rgba(126, 232, 250, 0.2);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 6px 25px rgba(124, 58, 237, 0.4), 0 0 18px rgba(126, 232, 250, 0.35);
+    transform: scale(1.05);
+  }
+}
+
+/* Sparkle sweep */
+.pretty-logo::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    130deg,
+    rgba(255, 255, 255, 0) 45%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0) 55%
+  );
+  transform: rotate(25deg);
+  animation: sparkleSweep 5s ease-in-out infinite;
+}
+
+@keyframes sparkleSweep {
+  0% {
+    transform: translateX(-150%) rotate(25deg);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(150%) rotate(25deg);
+    opacity: 0;
+  }
+}
+
+.pretty-logo:hover {
+  transform: scale(1.1) rotate(3deg);
+  box-shadow: 0 8px 25px rgba(124, 58, 237, 0.35), 0 0 15px rgba(126, 232, 250, 0.4);
+}
