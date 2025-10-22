@@ -169,6 +169,8 @@ header { background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
   <p class="note">Fill out this form and we will confirm availability by email/phone.</p>
 
   <form id="booking-form" action="https://formspree.io/f/xzzjdywd" method="POST">
+    <!-- Redirect to thank you page -->
+    <input type="hidden" name="_redirect" value="thankyou.html">
 
     <!-- Customer Info -->
     <div class="flex-row">
