@@ -6,14 +6,24 @@
   <title>Our Units — Sen Party Rentals</title>
   <meta name="description" content="Inventory — Moon bounces, water slides, combos, obstacle courses, add-ons and concessions." />
   <link rel="stylesheet" href="assets/style.css">
+
+  <style>
+    /* Make all images fully visible */
+    .media img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      background: #f0f0f0;
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
-        <a class="brand" href="index.html">
-  <img src="02B58D79-6737-47EA-8099-73006879E55A Small.jpeg" alt="Sen Party Rentals Logo" class="logo circle-logo">
-  <span>Sen party Rentals</span>
-</a>
+      <a class="brand" href="index.html">
+        <img src="02B58D79-6737-47EA-8099-73006879E55A Small.jpeg" alt="Sen Party Rentals Logo" class="logo circle-logo">
+        <span>Sen Party Rentals</span>
+      </a>
       <nav class="nav">
         <a href="index.html">Home</a>
         <a href="inventory.html" class="active">Our Units</a>
@@ -23,10 +33,11 @@
       </nav>
     </div>
   </header>
-</div>
-    </section>. <div class="halloween-banner">
-  🎃 Halloween Special: Get 10% OFF all bookings this October! 👻
-</div>
+
+  <div class="halloween-banner">
+    🎃 Halloween Special: Get 10% OFF all bookings this October! 👻
+  </div>
+
   <main class="container">
     <section class="inventory-hero">
       <div class="hero-left">
@@ -48,28 +59,23 @@
     </section>
 
     <section id="items" class="inventory-grid">
+
       <!-- MOON BOUNCES -->
       <article class="item-card" data-cat="moon" data-id="modular-moonbounce" data-price="200">
         <div class="media"><img src="IMG_2394.JPG" alt="Modular Moonbounce"></div>
         <div class="card-body">
           <h3>Modular Moonbounce</h3>
           <p class="muted">Classic bounce house — great for toddlers and family parties.</p>
-          <div class="meta">
-            <div class="price">$200/day</div>
-            <a class="btn" href="booking.html?add=modular-moonbounce">Book</a>
-          </div>
+          <div class="meta"><div class="price">$200/day</div><a class="btn" href="booking.html?add=modular-moonbounce">Book</a></div>
         </div>
       </article>
 
-      <article class="item-card" data-cat="moon" data-id="sponge-bop-moonbounce" data-price="200">
+      <article class="item-card" data-cat="moon" data-id="sponge-bop-moonbounce" data-price="250">
         <div class="media"><img src="F949C961-03FF-462B-A11D-70807A05C951 Small.jpeg" alt="Sponge Bop Moonbounce"></div>
         <div class="card-body">
           <h3>Sponge Bop Moonbounce</h3>
           <p class="muted">Cartoon-themed bounce that kids love.</p>
-          <div class="meta">
-            <div class="price">$250/day</div>
-            <a class="btn" href="booking.html?add=sponge-bop-moonbounce">Book</a>
-          </div>
+          <div class="meta"><div class="price">$250/day</div><a class="btn" href="booking.html?add=sponge-bop-moonbounce">Book</a></div>
         </div>
       </article>
 
@@ -78,10 +84,7 @@
         <div class="card-body">
           <h3>Castle Fun House</h3>
           <p class="muted">Spacious castle-design for medium parties.</p>
-          <div class="meta">
-            <div class="price">$250/day</div>
-            <a class="btn" href="booking.html?add=castle-fun-house">Book</a>
-          </div>
+          <div class="meta"><div class="price">$250/day</div><a class="btn" href="booking.html?add=castle-fun-house">Book</a></div>
         </div>
       </article>
 
@@ -90,10 +93,7 @@
         <div class="card-body">
           <h3>Magic Castle (Basketball Hoop)</h3>
           <p class="muted">Bounce house with built-in basketball hoop — extra active fun.</p>
-          <div class="meta">
-            <div class="price">$250/day</div>
-            <a class="btn" href="booking.html?add=magic-castle-hoop">Book</a>
-          </div>
+          <div class="meta"><div class="price">$250/day</div><a class="btn" href="booking.html?add=magic-castle-hoop">Book</a></div>
         </div>
       </article>
 
@@ -102,23 +102,17 @@
         <div class="card-body">
           <h3>Princess Castle Moonbounce</h3>
           <p class="muted">Perfect for themed birthday parties and princess events.</p>
-          <div class="meta">
-            <div class="price">$250/day</div>
-            <a class="btn" href="booking.html?add=princess-castle">Book</a>
-          </div>
+          <div class="meta"><div class="price">$250/day</div><a class="btn" href="booking.html?add=princess-castle">Book</a></div>
         </div>
       </article>
 
-      <!-- WATER SLIDES & WET RIDES -->
+      <!-- WATER SLIDES -->
       <article class="item-card" data-cat="water" data-id="giant-flipflop" data-price="450">
         <div class="media"><img src="B68A4ED3-056C-43FA-A37B-38E6EA4D7321 Small.jpeg" alt="Giant Flip-Flop"></div>
         <div class="card-body">
           <h3>The Giant Flip-Flop Splash Slide</h3>
           <p class="muted">Big splash and fast slide — perfect for summer parties.</p>
-          <div class="meta">
-            <div class="price">$450/day</div>
-            <a class="btn" href="booking.html?add=giant-flipflop">Book</a>
-          </div>
+          <div class="meta"><div class="price">$450/day</div><a class="btn" href="booking.html?add=giant-flipflop">Book</a></div>
         </div>
       </article>
 
@@ -127,10 +121,7 @@
         <div class="card-body">
           <h3>Castle Splash Combo</h3>
           <p class="muted">Slide plus small bounce — wet or dry setup available.</p>
-          <div class="meta">
-            <div class="price">$450/day</div>
-            <a class="btn" href="booking.html?add=castle-splash-combo">Book</a>
-          </div>
+          <div class="meta"><div class="price">$450/day</div><a class="btn" href="booking.html?add=castle-splash-combo">Book</a></div>
         </div>
       </article>
 
@@ -139,10 +130,7 @@
         <div class="card-body">
           <h3>Dino Splash Adventure</h3>
           <p class="muted">Prehistoric themed water slide and splash zone.</p>
-          <div class="meta">
-            <div class="price">$350/day</div>
-            <a class="btn" href="booking.html?add=dino-splash">Book</a>
-          </div>
+          <div class="meta"><div class="price">$350/day</div><a class="btn" href="booking.html?add=dino-splash">Book</a></div>
         </div>
       </article>
 
@@ -151,10 +139,7 @@
         <div class="card-body">
           <h3>Wild Rapid</h3>
           <p class="muted">Two-lane racing slide for epic backyard competitions.</p>
-          <div class="meta">
-            <div class="price">$500/day</div>
-            <a class="btn" href="booking.html?add=wild-rapid">Book</a>
-          </div>
+          <div class="meta"><div class="price">$500/day</div><a class="btn" href="booking.html?add=wild-rapid">Book</a></div>
         </div>
       </article>
 
@@ -163,10 +148,7 @@
         <div class="card-body">
           <h3>Big Wave Water Slide</h3>
           <p class="muted">Tall slide with dramatic splash pool — crowd favorite.</p>
-          <div class="meta">
-            <div class="price">$450/day</div>
-            <a class="btn" href="booking.html?add=big-wave">Book</a>
-          </div>
+          <div class="meta"><div class="price">$450/day</div><a class="btn" href="booking.html?add=big-wave">Book</a></div>
         </div>
       </article>
 
@@ -175,10 +157,7 @@
         <div class="card-body">
           <h3>Tropical Thunder (Wet & Dry)</h3>
           <p class="muted">Can be set up wet or dry for year-round fun.</p>
-          <div class="meta">
-            <div class="price">$480/day</div>
-            <a class="btn" href="booking.html?add=tropical-thunder">Book</a>
-          </div>
+          <div class="meta"><div class="price">$480/day</div><a class="btn" href="booking.html?add=tropical-thunder">Book</a></div>
         </div>
       </article>
 
@@ -187,10 +166,7 @@
         <div class="card-body">
           <h3>Dunk Tanks</h3>
           <p class="muted">Classic dunk tank — great for school fundraisers and events.</p>
-          <div class="meta">
-            <div class="price">$400/day</div>
-            <a class="btn" href="booking.html?add=dunk-tank">Book</a>
-          </div>
+          <div class="meta"><div class="price">$400/day</div><a class="btn" href="booking.html?add=dunk-tank">Book</a></div>
         </div>
       </article>
 
@@ -200,10 +176,7 @@
         <div class="card-body">
           <h3>Castle Combo (Bouncer + Slide wet)</h3>
           <p class="muted">Bounce and slide in one compact unit.</p>
-          <div class="meta">
-            <div class="price">$350/day</div>
-            <a class="btn" href="booking.html?add=castle-combo">Book</a>
-          </div>
+          <div class="meta"><div class="price">$350/day</div><a class="btn" href="booking.html?add=castle-combo">Book</a></div>
         </div>
       </article>
 
@@ -212,10 +185,7 @@
         <div class="card-body">
           <h3>High Sky Combo</h3>
           <p class="muted">Tall slide plus roomy bounce area for larger groups.</p>
-          <div class="meta">
-            <div class="price">$350/day</div>
-            <a class="btn" href="booking.html?add=high-sky-combo">Book</a>
-          </div>
+          <div class="meta"><div class="price">$350/day</div><a class="btn" href="booking.html?add=high-sky-combo">Book</a></div>
         </div>
       </article>
 
@@ -224,10 +194,7 @@
         <div class="card-body">
           <h3>Jerrassic Combo</h3>
           <p class="muted">Dino-themed combo with slide and play area.</p>
-          <div class="meta">
-            <div class="price">$300/day</div>
-            <a class="btn" href="booking.html?add=jerrassic-combo">Book</a>
-          </div>
+          <div class="meta"><div class="price">$300/day</div><a class="btn" href="booking.html?add=jerrassic-combo">Book</a></div>
         </div>
       </article>
 
@@ -237,10 +204,7 @@
         <div class="card-body">
           <h3>Black Opps</h3>
           <p class="muted">Military-style obstacle course challenge for teens and adults.</p>
-          <div class="meta">
-            <div class="price">$900/day</div>
-            <a class="btn" href="booking.html?add=black-opps">Book</a>
-          </div>
+          <div class="meta"><div class="price">$900/day</div><a class="btn" href="booking.html?add=black-opps">Book</a></div>
         </div>
       </article>
 
@@ -249,10 +213,7 @@
         <div class="card-body">
           <h3>60ft Backyard Extreme</h3>
           <p class="muted">Large-scale obstacle course for festivals and big events.</p>
-          <div class="meta">
-            <div class="price">$500/day</div>
-            <a class="btn" href="booking.html?add=30ft-extreme">Book</a>
-          </div>
+          <div class="meta"><div class="price">$500/day</div><a class="btn" href="booking.html?add=30ft-extreme">Book</a></div>
         </div>
       </article>
 
@@ -262,10 +223,7 @@
         <div class="card-body">
           <h3>Generator</h3>
           <p class="muted">Portable generator for powering rides and concessions.</p>
-          <div class="meta">
-            <div class="price">$100/day</div>
-            <a class="btn" href="booking.html?add=generator">Book</a>
-          </div>
+          <div class="meta"><div class="price">$100/day</div><a class="btn" href="booking.html?add=generator">Book</a></div>
         </div>
       </article>
 
@@ -274,10 +232,7 @@
         <div class="card-body">
           <h3>Table (6ft)</h3>
           <p class="muted">Sturdy 6' banquet table.</p>
-          <div class="meta">
-            <div class="price">$10/day</div>
-            <a class="btn" href="booking.html?add=table">Book</a>
-          </div>
+          <div class="meta"><div class="price">$10/day</div><a class="btn" href="booking.html?add=table">Book</a></div>
         </div>
       </article>
 
@@ -286,10 +241,7 @@
         <div class="card-body">
           <h3>Banquet Chair</h3>
           <p class="muted">Durable folding chairs for guests.</p>
-          <div class="meta">
-            <div class="price">$2/day</div>
-            <a class="btn" href="booking.html?add=chair">Book</a>
-          </div>
+          <div class="meta"><div class="price">$2/day</div><a class="btn" href="booking.html?add=chair">Book</a></div>
         </div>
       </article>
 
@@ -299,10 +251,7 @@
         <div class="card-body">
           <h3>Popcorn Machine</h3>
           <p class="muted">Fresh popcorn to delight partygoers.</p>
-          <div class="meta">
-            <div class="price">$75/day</div>
-            <a class="btn" href="booking.html?add=popcorn">Book</a>
-          </div>
+          <div class="meta"><div class="price">$75/day</div><a class="btn" href="booking.html?add=popcorn">Book</a></div>
         </div>
       </article>
 
@@ -311,21 +260,13 @@
         <div class="card-body">
           <h3>Snow Cone Machine</h3>
           <p class="muted">Cool treats for hot summer events.</p>
-          <div class="meta">
-            <div class="price">$75/day</div>
-            <a class="btn" href="booking.html?add=snow-cone">Book</a>
-          </div>
+          <div class="meta"><div class="price">$75/day</div><a class="btn" href="booking.html?add=snow-cone">Book</a></div>
         </div>
       </article>
 
     </section>
   </main>
- <!-- ✅ FLOATING SOCIAL BUTTONS -->
-  <div class="floating-socials">
-    <a href="https://www.tiktok.com/@senpartyrentals?_t=ZM-90hAM6E8IAa&_r=1" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-    <a href="https://www.instagram.com/senmoonbounce?igsh=M2I4NWp5c3lzYzhv&utm_source=qr" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.facebook.com/share/1DMqq4YYk3/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-  </div>
+
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
@@ -333,11 +274,39 @@
         <p>Phone: <a href="tel:+15717199575">+1 (571) 719-9575</a></p>
         <p>Email: <a href="mailto:senmoonbounce@gmail.com">senmoonbounce@gmail.com</a></p>
       </div>
-      <div class="small-muted">© <span id="year2"></span> Sen Party Rentals</div>
+      <div class="small-muted">© <span id="year"></span> Sen Party Rentals</div>
     </div>
   </footer>
 
   <script src="assets/script.js"></script>
-  <script>document.getElementById('year2').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // FILTER FUNCTIONALITY
+    const items = document.querySelectorAll('.item-card');
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const searchInput = document.getElementById('search');
+
+    function filterItems(category, keyword) {
+      items.forEach(item => {
+        const matchesCategory = category === 'all' || item.dataset.cat === category;
+        const matchesKeyword = !keyword || item.querySelector('h3').textContent.toLowerCase().includes(keyword.toLowerCase());
+        item.style.display = (matchesCategory && matchesKeyword) ? 'flex' : 'none';
+      });
+    }
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filterItems(btn.dataset.cat, searchInput.value.trim());
+      });
+    });
+
+    searchInput.addEventListener('input', () => {
+      const activeTab = document.querySelector('.tab-btn.active').dataset.cat;
+      filterItems(activeTab, searchInput.value.trim());
+    });
+  </script>
 </body>
 </html>
