@@ -11,8 +11,62 @@
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    /* ---------- HERO RESPONSIVE ---------- */
+    .hero { display:flex; flex-wrap:wrap; gap:2rem; align-items:center; margin-bottom:2rem; }
+    .hero-left { flex:1 1 320px; }
+    .hero-right { flex:1 1 280px; text-align:center; }
+    .hero-right img { max-width:100%; height:auto; border-radius:12px; display:inline-block; }
 
-  <!-- SEO / Social -->
+    @media (max-width:768px){
+      .hero { flex-direction:column; text-align:center; }
+      .hero-right img { max-width:90%; }
+      .hero-left .hero-actions { justify-content:center; }
+    }
+
+    /* ---------- FALL BANNER ---------- */
+    .fall-banner {
+      position: relative;
+      background: linear-gradient(to bottom, #FFFAF0, #FFDAB9);
+      color: #a63c00;
+      text-align: center;
+      padding: 3rem 1rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+      overflow: hidden;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+    }
+
+    .fall-banner::before,
+    .fall-banner::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 50px;
+      top: 0;
+      left: 0;
+      background: url('https://i.imgur.com/6QbK8P6.png') repeat-x;
+      background-size: contain;
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    .fall-banner::after { top:auto; bottom:0; transform: scaleY(-1); }
+
+    .fall-leaf {
+      position: absolute;
+      font-size: 30px;
+      pointer-events: none;
+      user-select: none;
+      animation: fall linear infinite, sway ease-in-out infinite;
+    }
+    @keyframes fall {
+      0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+    @keyframes sway {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(var(--sway, 15px)); }
+    }  <!-- SEO / Social -->
   <meta name="keywords" content="bounce house rental Manassas, party rentals DMV, water slide rentals, moon bounce, inflatable rentals" />
   <meta name="author" content="Sen Party Rentals">
   <meta property="og:title" content="Sen Party Rentals | Bounce House & Party Rentals in the DMV">
