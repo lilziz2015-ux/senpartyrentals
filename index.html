@@ -5,42 +5,154 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Sen Party Rentals — Home</title>
   <meta name="description" content="Sen Party Rentals — DMV bounce houses, water slides, combos, obstacle courses, concessions and party rentals." />
+
+  <!-- Main stylesheet (keeps your site style) -->
   <link rel="stylesheet" href="assets/style.css">
-<!-- ✅ Basic SEO Meta -->
-<title>Sen Party Rentals | Bounce House & Party Rentals in the DMV</title>
 
-<meta name="description" content="Sen Party Rentals provides bounce houses,bouncy house,moon bounce, water slides, tents, tables, and party equipment rentals across the DMV area — including Manassas, Woodbridge, Fairfax, and Washington, D.C. Clean, safe, and fun rentals for every event!">
-
-<!-- ✅ Keywords (for Google & Bing) -->
-<meta name="keywords" content="bounce house rental Manassas,party rentals near me, bounce house rentals near me, moon bounce rentals near me, water slide rentals near me, tent and chair rentals near me, inflatable rentals near me, birthday party rentals near me, event rentals near me, party equipment rentals near me, affordable bounce houses DMV, party rentals Manassas VA, bounce house Woodbridge VA, party rentals Fairfax VA, party rentals Washington DC, Sen Party Rentals,party rentals DMV,bouncy house,moon bounce,obstacle courses,mechanical bulls ,water slide rental Northern Virginia, moonbounce rentals, event rentals Woodbridge, tent and chair rental Fairfax, party equipment Washington DC, Sen Party Rentals, moon bounce DMV, inflatable rentals VA MD DC">
-
-<!-- ✅ Author -->
-<meta name="author" content="Sen Party Rentals">
-
-<!-- ✅ Open Graph (for social sharing) -->
-<meta property="og:title" content="Sen Party Rentals | Bounce House & Party Rentals in the DMV">
-<meta property="og:description" content="Book your bounce house, water slide, or party rental today! Serving the DMV area with clean, safe, and reliable equipment.">
-<meta property="og:image" content="IMG_0807 2 Small.jpeg">
-<meta property="og:url" content="https://www.senmoonbounce.com">
-<meta property="og:type" content="website">
-
-<!-- ✅ Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Sen Party Rentals | DMV Party Equipment Rentals">
-<meta name="twitter:description" content="Fun, safe, and affordable bounce house & party rentals across the DMV!">
-<meta name="twitter:image" content="02B58D79-6737-47EA-8099-73006879E55A Small.jpeg">
-  <!-- ✅ Font Awesome for Social Icons -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- SEO / Social -->
+  <meta name="keywords" content="bounce house rental Manassas, party rentals DMV, water slide rentals, moon bounce, inflatable rentals" />
+  <meta name="author" content="Sen Party Rentals">
+  <meta property="og:title" content="Sen Party Rentals | Bounce House & Party Rentals in the DMV">
+  <meta property="og:description" content="Book your bounce house, water slide, or party rental today! Serving the DMV area with clean, safe, and reliable equipment.">
+  <meta property="og:image" content="IMG_0807 2 Small.jpeg">
+  <meta property="og:url" content="https://www.senmoonbounce.com">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Inline styles for Featured + Packages + Hero responsiveness (keeps rest of site unchanged) -->
+  <style>
+    /* ---------- HERO RESPONSIVE ---------- */
+    .hero { display:flex; flex-wrap:wrap; gap:2rem; align-items:center; margin-bottom:1.8rem; }
+    .hero-left { flex:1 1 340px; }
+    .hero-right { flex:1 1 320px; text-align:center; }
+    .hero-right img { max-width:100%; height:auto; border-radius:12px; display:inline-block; }
+
+    @media (max-width:768px){
+      .hero { flex-direction:column; text-align:center; }
+      .hero-right img { max-width:92%; }
+      .hero-left .hero-actions { justify-content:center; }
+    }
+
+    /* ========== FEATURED UNITS - small, clean, photo-forward ========== */
+    .featured-units { padding: 1.2rem 0 2.2rem; background: #fff; }
+    .featured-units h2 { text-align:center; margin-bottom:1.2rem; font-size:1.7rem; color:#0b3a66; }
+
+    .premium-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1rem;
+      align-items: stretch;
+      max-width:1200px;
+      margin:0 auto;
+    }
+
+    .unit-card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+      transition: transform .22s ease, box-shadow .22s ease;
+      display:flex;
+      flex-direction:column;
+      text-align:center;
+    }
+    .unit-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.10);
+    }
+
+    .unit-media {
+      width:100%;
+      height:170px;
+      background:#fafbfd;
+      display:block;
+      overflow:hidden;
+      align-self:stretch;
+    }
+    /* show full pictures without cropping while maintaining consistent card height */
+    .unit-media img {
+      width:100%;
+      height:100%;
+      object-fit:contain; /* ensures entire image shows */
+      background: #fff;
+      padding:8px; /* small inner padding so object-fit images don't touch edges */
+      display:block;
+      transition: transform .28s ease;
+    }
+    .unit-card:hover .unit-media img { transform: scale(1.02); }
+
+    .unit-info {
+      padding:0.75rem 0.9rem 1rem;
+      display:flex;
+      flex-direction:column;
+      gap:0.5rem;
+      flex:1 1 auto;
+    }
+    .unit-title { margin:0; font-size:1rem; font-weight:700; color:#083554; }
+    .unit-price { color:#ff6b6b; font-weight:700; font-size:0.92rem; }
+    .unit-desc { color:#606f7b; font-size:0.86rem; margin:0; min-height:36px; }
+
+    .unit-cta { display:flex; gap:0.5rem; justify-content:center; margin-top:auto; flex-wrap:wrap; }
+    .btn-book { background:#ff6b6b; color:#fff; padding:0.45rem 0.85rem; border-radius:8px; text-decoration:none; font-weight:700; font-size:0.9rem; }
+    .btn-book:hover { background:#ff4f4f; }
+    .btn-details { background:transparent; border:1px solid #e8eef6; padding:0.42rem 0.7rem; border-radius:8px; color:#333; text-decoration:none; font-size:0.9rem; }
+
+    .see-more-card {
+      display:flex; align-items:center; justify-content:center; border-radius:10px;
+      background: linear-gradient(135deg,#eaf5ff,#dff0ff);
+      color:#034a84; font-weight:700; font-size:1rem; padding:1rem;
+      text-decoration:none;
+      transition: transform .22s ease;
+    }
+    .see-more-card:hover { transform: translateY(-5px); }
+
+    /* ========== POPULAR PACKAGES (compact modern) ========== */
+    .popular { padding:1.6rem 0 2rem; background: #fbfdff; }
+    .popular h2 { text-align:center; margin-bottom:1rem; color:#0b3a66; font-size:1.6rem; }
+
+    .cards {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap:1rem;
+      max-width:1100px;
+      margin:0 auto;
+    }
+    .card {
+      background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 6px 20px rgba(0,0,0,0.06);
+      transition:transform .22s ease;
+      text-align:center;
+      padding-bottom:0.75rem;
+    }
+    .card:hover { transform: translateY(-6px); box-shadow:0 12px 36px rgba(0,0,0,0.10); }
+    .card img { width:100%; height:140px; object-fit:contain; padding:10px; background:#fff; }
+    .card h4 { margin:0.5rem 0 0.25rem; color:#083554; font-size:1rem; }
+    .card p { margin:0 1rem 0.6rem; color:#58636c; font-size:0.88rem; }
+    .card .btn { background:#083554; color:#fff; padding:0.45rem 0.85rem; border-radius:8px; text-decoration:none; display:inline-block; font-weight:700; }
+    .card .btn:hover { background:#062f4a; }
+
+    /* Small adjustments */
+    @media (max-width:480px){
+      .unit-media { height:150px; }
+      .card img { height:120px; }
+    }
+
+    /* utilities (keeps header/footer unchanged) */
+    .container { max-width:1200px; margin:0 auto; padding:0 1rem; }
+    .halloween-banner { text-align:center; margin:0.2rem 0 1.2rem; background:linear-gradient(90deg,#fff6e6,#fff); padding:0.5rem 1rem; border-radius:8px; color:#6b4a00; }
+  </style>
 </head>
 <body>
 
   <!-- HEADER -->
   <header class="site-header">
     <div class="container header-inner">
-    <a class="brand" href="index.html">
-  <img src="02B58D79-6737-47EA-8099-73006879E55A Small.jpeg" alt="Sen Party Rentals Logo" class="logo circle-logo">
-  <span>Sen party Rentals</span>
-</a>
+      <a class="brand" href="index.html">
+        <img src="02B58D79-6737-47EA-8099-73006879E55A Small.jpeg" alt="Sen Party Rentals Logo" class="logo circle-logo">
+        <span>Sen Party Rentals</span>
+      </a>
+
       <nav class="nav" id="main-nav">
         <a href="index.html" class="active">Home</a>
         <a href="inventory.html">Our Units</a>
@@ -69,36 +181,104 @@
           <li>Free delivery within 15 miles of 20112</li>
         </ul>
       </div>
+
       <div class="hero-right">
-        <img src="IMG_0807 copy Medium.jpeg" alt="Kids playing on an inflatable" />
+        <img src="IMG_0807 copy Medium.jpeg" alt="Kids playing on an inflatable">
       </div>
     </section>
 
-    <div class="halloween-banner">
-      🎃 Halloween Special: Get 10% OFF all bookings this October! 👻
-    </div>
+    <div class="halloween-banner">🎃 Halloween Special: Get 10% OFF all bookings this October! 👻</div>
+
+    <!-- FEATURED UNITS -->
+    <section class="container featured-units">
+      <h2>Featured Units</h2>
+      <div class="premium-grid">
+        <!-- 1 -->
+        <article class="unit-card">
+          <div class="unit-media"><img src="IMG_2394.JPG" alt="Modular Moonbounce"></div>
+          <div class="unit-info">
+            <h3 class="unit-title">Modular Moonbounce</h3>
+            <div class="unit-price">$200/day</div>
+            <p class="unit-desc">Classic bounce house — great for toddlers and family parties.</p>
+            <div class="unit-cta">
+              <a class="btn-book" href="booking.html?add=modular-moonbounce"><i class="fa-solid fa-calendar-plus"></i> Book</a>
+              <a class="btn-details" href="inventory.html#modular-moonbounce">Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2 -->
+        <article class="unit-card">
+          <div class="unit-media"><img src="F949C961-03FF-462B-A11D-70807A05C951 Small.jpeg" alt="Sponge Bop Moonbounce"></div>
+          <div class="unit-info">
+            <h3 class="unit-title">Sponge Bop Moonbounce</h3>
+            <div class="unit-price">$250/day</div>
+            <p class="unit-desc">Cartoon-themed bounce that kids absolutely love.</p>
+            <div class="unit-cta">
+              <a class="btn-book" href="booking.html?add=sponge-bop-moonbounce"><i class="fa-solid fa-calendar-plus"></i> Book</a>
+              <a class="btn-details" href="inventory.html#sponge-bop-moonbounce">Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3 -->
+        <article class="unit-card">
+          <div class="unit-media"><img src="B68A4ED3-056C-43FA-A37B-38E6EA4D7321 Small.jpeg" alt="Giant Flip-Flop Slide"></div>
+          <div class="unit-info">
+            <h3 class="unit-title">Giant Flip-Flop Slide</h3>
+            <div class="unit-price">$450/day</div>
+            <p class="unit-desc">Big splash and fast slide — perfect for summer backyard parties.</p>
+            <div class="unit-cta">
+              <a class="btn-book" href="booking.html?add=giant-flipflop"><i class="fa-solid fa-calendar-plus"></i> Book</a>
+              <a class="btn-details" href="inventory.html#giant-flipflop">Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4 -->
+        <article class="unit-card">
+          <div class="unit-media"><img src="1775BEDF-B261-4718-9759-8BCABD72C5BB 2 Small.jpeg" alt="Castle Combo"></div>
+          <div class="unit-info">
+            <h3 class="unit-title">Castle Combo</h3>
+            <div class="unit-price">$350/day</div>
+            <p class="unit-desc">Bounce + slide combo — versatile and crowd-pleasing.</p>
+            <div class="unit-cta">
+              <a class="btn-book" href="booking.html?add=castle-combo"><i class="fa-solid fa-calendar-plus"></i> Book</a>
+              <a class="btn-details" href="inventory.html#castle-combo">Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- See more -->
+        <a href="inventory.html" class="see-more-card" aria-label="See more units">See More Units →</a>
+      </div>
+    </section>
 
     <!-- POPULAR PACKAGES -->
-    <section class="container popular">
-      <h2>Popular Packages</h2>
-      <div class="cards">
-        <div class="card">
-          <h4>Family Fun Pack</h4>
-          <img src="2EF4A9A4-A1B8-48FE-A5D2-6AE9D1AEF084 Small.jpeg" alt="">
-          <p class="small-muted">1 Water Slide + 1 Moon Bounce + 10 chairs</p>
-          <a class="btn" href="booking.html?package=family-fun">Book</a>
-        </div>
-        <div class="card">
-          <h4>Big Splash Pack</h4>
-          <img src="ADD4FA0C-343A-47C6-A345-F58DE6CD8E7C Small.jpeg" alt="">
-          <p class="small-muted">Wild Rapid + Dunk Tank + Concessions</p>
-          <a class="btn" href="booking.html?package=big-splash">Book</a>
-        </div>
-        <div class="card">
-          <h4>Backyard Extreme</h4>
-          <img src="1DCEFD9B-F5C6-480D-BB50-3AC5DE8F3553.PNG" alt="">
-          <p class="small-muted">30ft Obstacle Course + High Sky Combo</p>
-          <a class="btn" href="booking.html?package=backyard-extreme">Book</a>
+    <section class="popular">
+      <div class="container">
+        <h2>Popular Packages</h2>
+        <div class="cards">
+          <div class="card">
+            <img src="2EF4A9A4-A1B8-48FE-A5D2-6AE9D1AEF084 Small.jpeg" alt="Family Fun Pack">
+            <h4>Family Fun Pack</h4>
+            <p>1 Water Slide + 1 Moon Bounce + 10 chairs</p>
+            <a class="btn" href="booking.html?package=family-fun">Book</a>
+          </div>
+
+          <div class="card">
+            <img src="ADD4FA0C-343A-47C6-A345-F58DE6CD8E7C Small.jpeg" alt="Big Splash Pack">
+            <h4>Big Splash Pack</h4>
+            <p>Wild Rapid + Dunk Tank + Concessions</p>
+            <a class="btn" href="booking.html?package=big-splash">Book</a>
+          </div>
+
+          <div class="card">
+            <img src="1DCEFD9B-F5C6-480D-BB50-3AC5DE8F3553.PNG" alt="Backyard Extreme">
+            <h4>Backyard Extreme</h4>
+            <p>30ft Obstacle Course + High Sky Combo</p>
+            <a class="btn" href="booking.html?package=backyard-extreme">Book</a>
+          </div>
         </div>
       </div>
     </section>
@@ -107,18 +287,9 @@
     <section class="container why">
       <h2>Why Choose Sen Party Rentals?</h2>
       <div class="grid-3">
-        <div>
-          <strong>Safety First</strong>
-          <p class="muted">We sanitize and inspect every unit before delivery.</p>
-        </div>
-        <div>
-          <strong>Friendly Service</strong>
-          <p class="muted">Professional setup team and on-time delivery.</p>
-        </div>
-        <div>
-          <strong>Flexible Options</strong>
-          <p class="muted">Custom packages, concessions, power solutions.</p>
-        </div>
+        <div><strong>Safety First</strong><p>We sanitize and inspect every unit before delivery.</p></div>
+        <div><strong>Friendly Service</strong><p>Professional setup team and on-time delivery.</p></div>
+        <div><strong>Flexible Options</strong><p>Custom packages, concessions, power solutions.</p></div>
       </div>
     </section>
 
@@ -138,21 +309,12 @@
   </main>
 
   <!-- CUSTOMER REVIEWS -->
-  <section class="container reviews">
+  <section class="container reviews" aria-label="Customer reviews">
     <h2>What Our Customers Say</h2>
-    <div class="review-carousel">
-      <div class="review-cards">
-        <div class="review-card"><div class="stars">★★★★★</div><p>"Sen Party Rentals made our birthday party unforgettable! The kids loved every second."</p><strong>- Emily Johnson</strong></div>
-        <div class="review-card"><div class="stars">★★★★☆</div><p>"Professional and punctual team. Setup was fast and clean."</p><strong>- Michael Brown</strong></div>
-        <div class="review-card"><div class="stars">★★★★★</div><p>"Great selection of inflatables and water slides. Highly recommend!"</p><strong>- Jessica Davis</strong></div>
-        <div class="review-card"><div class="stars">★★★★★</div><p>"Friendly staff and excellent service. Will book again."</p><strong>- Christopher Miller</strong></div>
-        <div class="review-card"><div class="stars">★★★★☆</div><p>"Affordable prices and the equipment was sanitized and safe."</p><strong>- Amanda Wilson</strong></div>
-        <div class="review-card"><div class="stars">★★★★★</div><p>"Our school event was a huge success thanks to Sen Party Rentals."</p><strong>- Joshua Anderson</strong></div>
-        <div class="review-card"><div class="stars">★★★★★</div><p>"Fast delivery, setup was perfect, kids had so much fun!"</p><strong>- Sarah Thompson</strong></div>
-        <div class="review-card"><div class="stars">★★★★☆</div><p>"Excellent communication and very reliable service."</p><strong>- Daniel Martinez</strong></div>
-        <div class="review-card"><div class="stars">★★★★★</div><p>"Everything was clean, safe, and the staff was very friendly."</p><strong>- Ashley Moore</strong></div>
-        <div class="review-card"><div class="stars">★★★★★</div><p>"Highly recommend for any party or school event. Amazing experience!"</p><strong>- Brandon Taylor</strong></div>
-      </div>
+    <div class="review-cards" id="reviews">
+      <div class="review-card"><div class="stars">★★★★★</div><p>"Sen Party Rentals made our birthday party unforgettable! The kids loved every second."</p><strong>- Emily Johnson</strong></div>
+      <div class="review-card"><div class="stars">★★★★☆</div><p>"Professional and punctual team. Setup was fast and clean."</p><strong>- Michael Brown</strong></div>
+      <div class="review-card"><div class="stars">★★★★★</div><p>"Great selection and friendly staff!"</p><strong>- Jessica Davis</strong></div>
     </div>
   </section>
 
@@ -164,42 +326,71 @@
         <p>Address: 11910 Bradley Forest Rd, Manassas, VA 20112</p>
         <p>Phone: <a href="tel:+15717199575">+1 (571) 719-9575</a></p>
         <p>Email: <a href="mailto:senmoonbounce@gmail.com">senmoonbounce@gmail.com</a></p>
-
-        <!-- ✅ SOCIAL LINKS -->
         <div class="social-links">
-          <a href="https://www.tiktok.com/@senpartyrentals?_t=ZM-90hAM6E8IAa&_r=1" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-          <a href="https://www.instagram.com/senmoonbounce?igsh=M2I4NWp5c3lzYzhv&utm_source=qr" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.facebook.com/share/1DMqq4YYk3/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.tiktok.com/@senpartyrentals" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://www.instagram.com/senmoonbounce" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/share/1DMqq4YYk3/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
         </div>
       </div>
       <div class="small-muted">© <span id="year"></span> Sen Party Rentals</div>
     </div>
   </footer>
 
-  <!-- ✅ FLOATING SOCIAL BUTTONS -->
+  <!-- Floating Socials -->
   <div class="floating-socials">
-    <a href="https://www.tiktok.com/@senpartyrentals?_t=ZM-90hAM6E8IAa&_r=1" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-    <a href="https://www.instagram.com/senmoonbounce?igsh=M2I4NWp5c3lzYzhv&utm_source=qr" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.facebook.com/share/1DMqq4YYk3/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.tiktok.com/@senpartyrentals" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="https://www.instagram.com/senmoonbounce" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.facebook.com/share/1DMqq4YYk3/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
   </div>
 
-  <!-- SCRIPTS -->
-  <script src="assets/script.js"></script>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <!-- SCRIPTS (nav toggle, simple review rotator, visit logger) -->
   <script>
+    // dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile nav toggle (keeps original menu behavior)
+    (function(){
+      const btn = document.getElementById('nav-toggle');
+      const nav = document.getElementById('main-nav');
+      if(btn && nav){
+        btn.addEventListener('click', ()=> {
+          nav.classList.toggle('open');
+          btn.setAttribute('aria-expanded', nav.classList.contains('open'));
+        });
+      }
+    })();
+
+    // Simple review rotator (cycles visible review every 3s)
+    (function(){
+      const reviews = Array.from(document.querySelectorAll('#reviews .review-card'));
+      if(reviews.length > 1){
+        let idx = 0;
+        reviews.forEach((r,i)=> r.style.display = i===0 ? 'block' : 'none');
+        setInterval(()=> {
+          reviews[idx].style.display = 'none';
+          idx = (idx+1) % reviews.length;
+          reviews[idx].style.display = 'block';
+        }, 3000);
+      }
+    })();
+
+    // Visit logger (keeps your existing Google Apps Script call)
     (function() {
-      const scriptURL = "https://script.google.com/macros/s/AKfycbwQAb348VKG0bBwpXeK86n3SKRPhLnIsH0quc99n0omWEWG1ciljlfD1lkPgms7sTPm/exec";
-      const data = { visitedAt: new Date().toISOString() };
-      fetch(scriptURL, {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: { "Content-Type": "application/json" }
-      })
-      .then(response => response.ok
-        ? console.log("✅ Visit logged successfully.")
-        : console.error("❌ Failed to log visit."))
-      .catch(error => console.error("❌ Error sending visit:", error));
+      try {
+        const scriptURL = "https://script.google.com/macros/s/AKfycbwQAb348VKG0bBwpXeK86n3SKRPhLnIsH0quc99n0omWEWG1ciljlfD1lkPgms7sTPm/exec";
+        const data = { visitedAt: new Date().toISOString(), page: "home" };
+        fetch(scriptURL, {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: { "Content-Type": "application/json" }
+        })
+        .then(res => { if(!res.ok) console.warn('Visit log failed', res.status); })
+        .catch(e => console.warn('Visit log error', e));
+      } catch(e) { console.warn(e); }
     })();
   </script>
+
+  <!-- keep your main script if you have one -->
+  <script src="assets/script.js"></script>
 </body>
 </html>
